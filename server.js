@@ -30,13 +30,19 @@ db.on("error", (error) => {
 // mount middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
-app.use(session({
-    secret: process.env.SECRET,
-    resave: false,
-    saveUnitialized: false
-}));
+app.use(express.static("public"));
+// app.use(session({
+//     secret: process.env.SECRET,
+//     resave: false,
+//     saveUnitialized: false
+// }));
 
 // mount router
+app.get("/", (req, res) => res.render("home.ejs"));
+
+// app.use(usersRouter);
+// app.use(isAuthenticated, tracksRouter);
+// app.use(isAuthenticated, carsRouter);
 
 
 // tell application to listen
