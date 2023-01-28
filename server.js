@@ -40,7 +40,7 @@ app.use(express.static("public"));
 // mount router
 app.get("/", (req, res) => res.render("home.ejs"));
 
-// app.use(usersRouter);
+app.use(usersRouter);
 // app.use(isAuthenticated, tracksRouter);
 // app.use(isAuthenticated, carsRouter);
 
