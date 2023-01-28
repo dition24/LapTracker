@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Index</title>
+</head>
+<body>
+    <h1>Tracklist</h1>
+    <a href="/tracks/newtrack">Add a Track</a>
+    <div>
+        <ul>
+            <% tracks.forEach(track => { %>
+                <li>
+                    <p><%= track.name %></p>
+                    <p><%= track.location %></p>
+                    <a href="/tracks/<%= track._id %>"><img src="<%= track.img %>" alt="<%= track.name %>"></a>
+                    <p><%= track.lapTime %></p>
+                    <p><%= track.car %></p>
+                    <p><%= track.date %></p>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+</body>
+</html>

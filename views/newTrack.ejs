@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a Track</title>
+</head>
+<body>
+   <h1>Add a New Track</h1>
+   <form action="/tracks" method="POST" enctype="multipart/form-data" autocomplete="off">
+        Name: <input type="text" name="name">
+        Location: <input type="text" name="location">
+        Lap Time: <input type="text" name="lapTime">
+        Car: <input type="text" name="car">
+        Image: <input type="text" name="img">
+        Date: <input type="text" name="date">
+        <input type="submit" name="" value="Add Track">
+   </form>
+</body>
+</html>

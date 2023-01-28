@@ -4,9 +4,10 @@ const Schema = mongoose.Schema;
 const trackSchema = new Schema({
     name: { type: String},
     location: { type: String},
-    lapTime: { type: Number},
+    lapTime: { type: String},
     car: { type: String},
-    img: { type: String}
+    img: { type: String},
+    date: {type: String}
 });
 
 module.exports = mongoose.model("Track", trackSchema);

@@ -41,8 +41,8 @@ app.use(express.static("public"));
 app.get("/", (req, res) => res.render("home.ejs"));
 
 app.use(usersRouter);
-// app.use(isAuthenticated, tracksRouter);
-// app.use(isAuthenticated, carsRouter);
+app.use(tracksRouter);
+// app.use(carsRouter);
 
 
 // tell application to listen
