@@ -2,11 +2,11 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const trackSchema = new Schema({
-    name: { type: String},
-    location: { type: String},
-    lapTime: { type: String},
-    car: { type: String},
-    img: { type: String},
+    name: {type: String},
+    location: {type: String},
+    lapTime: {type: String},
+    car: {type: String},
+    img: {type: String},
     date: {type: String}
 });
 

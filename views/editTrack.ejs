@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Track</title>
+</head>
+<body>
+    <nav>
+        <h1>LapTracker</h1>
+        <a href="/">Log Out</a>
+    </nav>
+    <form action="/tracks/<%=track._id%>?_method=PUT" method="POST">
+        Name: <input type="text" name="name" value="<%= track.name %>">
+        Location: <input type="text" name="location" value="<%= track.location %>">
+        Image: <input type="text" name="img" value="<%= track.img %>">
+        Lap Time: <input type="text" name="lapTime" value="<%= track.lapTime %>">
+        Car: <input type="text" name="car" value="<%= track.car %>">
+        Date: <input type="text" name="date" value="<%= track.date %>">
+    </form>
+</body>
+</html>

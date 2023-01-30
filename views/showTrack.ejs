@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track</title>
+</head>
+<body>
+    <nav>
+        <h1>LapTracker</h1>
+        <a href="/">Log Out</a>
+    </nav>
+    <h1>Track</h1>
+    <ul>
+        <li>
+            <p><%= track.name %></p>
+            <p><%= track.location %></p>
+            <a href="/tracks/<%= track._id %>"><img src="<%= track.img %>" alt="<%= track.name %>"></a>
+            <p><%= track.lapTime %></p>
+            <p><%= track.car %></p>
+            <p><%= track.date %></p>
+        </li>
+        <a href="/tracks/<%= track._id %>/edit">Edit</a>
+    </ul>
+</body>
+</html>
