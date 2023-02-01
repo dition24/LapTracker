@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const session = require("express-session");
 const tracksRouter = require("./controllers/tracks");
-// const carsRouter = require("./controllers/cars");
+const carsRouter = require("./controllers/cars");
 const usersRouter = require("./controllers/users");
 
 // initialize the application
@@ -59,7 +59,7 @@ app.get("/", (req, res) => res.render("home.ejs"));
 
 app.use(usersRouter);
 app.use(isAuthenticated, tracksRouter);
-// app.use(isAuthenticated, carsRouter);
+app.use(isAuthenticated, carsRouter);
 
 
 // tell application to listen

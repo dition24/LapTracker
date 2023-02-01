@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const carSchema = new Schema({
     year: { type: Number},
     make: { type: String},
-    model: { type: String}
+    model: { type: String},
+    img: { type: String}
 });
 
 module.exports = mongoose.model("Car", carSchema);

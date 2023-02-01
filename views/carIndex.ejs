@@ -4,9 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CarIndex</title>
+    <title>Car Index</title>
 </head>
 <body>
-
+    <nav>
+        <h1>LapTracker</h1>
+        <a href="/">Log Out</a>
+    </nav>
+    <h1>Garage</h1>
+    <a href="/cars/newcar">Add a Car</a>
+    <div>
+        <ul>
+            <% cars.forEach(car => { %>
+                <li>
+                    <p><%= car.year %></p>
+                    <p><%= car.make %></p>
+                    <p><%= car.model %></p>
+                    <a href="/cars/<%= car._id %>"><img src="<%= car.img %>" alt="<%= car.name %>"></a>
+                 
+                </li>
+            <% }) %>
+        </ul>
+    </div>
 </body>
 </html>
