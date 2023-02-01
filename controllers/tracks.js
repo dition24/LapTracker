@@ -10,7 +10,6 @@ router.get("/tracks", (req, res) => {
         res.render("trackIndex.ejs", {
             tracks: allTracks,
         });
-        console.log(allTracks);
     });
 });
 

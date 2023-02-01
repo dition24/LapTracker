@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Car</title>
+</head>
+<body>
+    <nav>
+        <h1>LapTracker</h1>
+        <a href="/cars">Garage</a>
+        <a href="/">Log Out</a>
+    </nav>
+    <form action="/cars/<%=car._id%>?_method=PUT" method="POST">
+        Year: <input type="text" name="year" value="<%= car.year %>">
+        Make: <input type="text" name="make" value="<%= car.make %>">
+        Model: <input type="text" name="model" value="<%= car.model %>">
+        Image: <input type="text" name="img" value="<%= car.img %>">
+        <input type="submit" value="Submit Changes">
+    </form>
+</body>
+</html>
