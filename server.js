@@ -2,7 +2,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
-// const session = require("express-session");
+const session = require("express-session");
 const tracksRouter = require("./controllers/tracks");
 // const carsRouter = require("./controllers/cars");
 const usersRouter = require("./controllers/users");
@@ -31,18 +31,35 @@ db.on("error", (error) => {
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
 app.use(express.static("public"));
-// app.use(session({
-//     secret: process.env.SECRET,
-//     resave: false,
-//     saveUnitialized: false
-// }));
+app.use(session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: false
+}));
+
+app.use((req, res, next) => {
+    if(req.session.uesrId) {
+        res.locals.user = req.session.userId
+    } else {
+        res.locals.user = null
+    }
+    next();
+});
+
+// authentication middleware
+function isAuthenticated(req, res, next) {
+    if(!req.session.userId) {
+        return res.redirect("/login");
+    };
+    next();
+};
 
 // mount router
 app.get("/", (req, res) => res.render("home.ejs"));
 
 app.use(usersRouter);
-app.use(tracksRouter);
-// app.use(carsRouter);
+app.use(isAuthenticated, tracksRouter);
+// app.use(isAuthenticated, carsRouter);
 
 
 // tell application to listen
