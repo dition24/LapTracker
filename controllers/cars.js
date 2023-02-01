@@ -19,7 +19,11 @@ router.get("/cars/new", (req, res) => {
 });
 
 // Delete
-
+router.delete("/cars/:id", (req, res) => {
+    Car.findByIdAndDelete(req.params.id, (error, data) => {
+        res.redirect("/cars");
+    });
+});
 
 // Update
 router.put("/cars/:id", (req, res) => {

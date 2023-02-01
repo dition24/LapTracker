@@ -22,6 +22,9 @@
             
         </li>
         <a href="/cars/<%= car._id %>/edit">Edit</a>
+        <form action="/cars/<%= car._id %>?_method=DELETE" method="POST">
+            <input type="submit" value="DELETE" />
+        </form>
     </ul>
 </body>
 </html>

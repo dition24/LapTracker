@@ -19,7 +19,11 @@ router.get("/tracks/newTrack", (req, res) => {
 });
 
 // Delete
-
+router.delete("/tracks/:id", (req, res) => {
+    Track.findByIdAndDelete(req.params.id, (error, data) => {
+        res.redirect("/tracks");
+    });
+});
 
 // Update
 router.put("/tracks/:id", (req, res) => {
