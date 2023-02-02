@@ -22,7 +22,7 @@
                     <p><%= track.location %></p>
                     <a href="/tracks/<%= track._id %>"><img src="<%= track.img %>" alt="<%= track.name %>"></a>
                     <p><%= track.lapTime %></p>
-                    <p><%= track.car %></p>
+                    <p><%= track.car.model %></p>
                     <p><%= track.date %></p>
                 </li>
             <% }) %>

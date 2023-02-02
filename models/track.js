@@ -5,7 +5,11 @@ const trackSchema = new Schema({
     name: {type: String},
     location: {type: String},
     lapTime: {type: String},
-    car: {type: String},
+    car: {
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref: "Car"
+    },
     img: {type: String},
     date: {type: String}
 });

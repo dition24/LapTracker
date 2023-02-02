@@ -12,7 +12,12 @@
         Name: <input type="text" name="name">
         Location: <input type="text" name="location">
         Lap Time: <input type="text" name="lapTime">
-        Car: <input type="text" name="car">
+        Car:
+        <select name="car">
+            <% allCars.forEach(car => { %>
+                <option value="<%= car._id %>"><%= car.model %></option>
+            <% }); %>
+        </select>
         Image: <input type="text" name="img">
         Date: <input type="text" name="date">
         <input type="submit" value="Add Track">

@@ -57,6 +57,8 @@ function isAuthenticated(req, res, next) {
 // mount router
 app.get("/", (req, res) => res.render("home.ejs"));
 
+app.get("/preview", (req, res) => res.render("preview.ejs"));
+
 app.use(usersRouter);
 app.use(isAuthenticated, tracksRouter);
 app.use(isAuthenticated, carsRouter);

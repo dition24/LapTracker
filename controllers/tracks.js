@@ -1,12 +1,15 @@
 const express = require("express");
 const router = express.Router();
 const Track = require("../models/track");
+const Car = require("../models/car");
 
 // INDUCES
 
 // Index
 router.get("/tracks", (req, res) => {
-    Track.find({}, (error, allTracks) => {
+    Track.find({})
+    .populate("car")
+    .exec((error, allTracks) => {
         res.render("trackIndex.ejs", {
             tracks: allTracks,
         });
@@ -15,7 +18,9 @@ router.get("/tracks", (req, res) => {
 
 // New
 router.get("/tracks/newTrack", (req, res) => {
-    res.render("newTrack.ejs");
+    Car.find({}, (error, allCars) => {
+        res.render("newTrack.ejs", { allCars });
+    });
 });
 
 // Delete
@@ -50,7 +55,9 @@ router.get("/tracks/:id/edit", (req, res) => {
 
 // Show
 router.get("/tracks/:id", (req, res) => {
-    Track.findById(req.params.id, (error, foundTrack) => {
+    Track.findById(req.params.id)
+    .populate("car")
+    .exec((error, foundTrack) => {
         res.render("showTrack.ejs", {
             track: foundTrack
         });

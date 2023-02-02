@@ -1,0 +1,20 @@
+body {
+    background-image: url("https://robbreport.com/wp-content/uploads/2018/10/cm.jpg?w=1000");
+    background-size: cover;
+}
+
+#homeIntro {
+    background-color: rgba(255, 255, 255, 0.75);
+    width: 500px;
+    border-radius: 5px;
+}
+
+#previewButton {
+    background-color: rgba(255, 255, 0, 0.75);
+    border-radius: 5px;
+}
+
+#signupButton {
+    background-color: rgba(0, 255, 0, 0.75);
+    border-radius: 5px;
+}
