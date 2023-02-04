@@ -4,20 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
     <title>Car Index</title>
 </head>
 <body>
     <nav>
-        <h1>LapTracker</h1>
-        <a href="/">Log Out</a>
-        <a href="/tracks">Tracklist</a>
+        <ul>
+            <li id="appname">LapTracker</li>
+            <li>
+                <button id="logout">
+                    <a href="/">Log Out</a>
+                </button>
+            </li>
+            <li>
+                <button id="garage">
+                    <a href="/tracks">Tracklist</a>
+                </button>
+            </li>
+        </ul>
     </nav>
-    <h1>Garage</h1>
+    <h2>Garage</h2>
     <a href="/cars/new">Add a Car</a>
     <div>
-        <ul>
+        <ul id="index">
             <% cars.forEach(car => { %>
-                <li>
+                <li id="entry">
                     <p><%= car.year %></p>
                     <p><%= car.make %></p>
                     <p><%= car.model %></p>

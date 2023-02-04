@@ -7,7 +7,7 @@ const Car = require("../models/car");
 
 // Index
 router.get("/tracks", (req, res) => {
-    Track.find({})
+    Track.find({createdBy: req.session.userId})
     .populate("car")
     .exec((error, allTracks) => {
         res.render("trackIndex.ejs", {
@@ -18,7 +18,7 @@ router.get("/tracks", (req, res) => {
 
 // New
 router.get("/tracks/newTrack", (req, res) => {
-    Car.find({}, (error, allCars) => {
+    Car.find({createdBy: req.session.userId}, (error, allCars) => {
         res.render("newTrack.ejs", { allCars });
     });
 });
@@ -39,6 +39,7 @@ router.put("/tracks/:id", (req, res) => {
 
 // Create
 router.post("/tracks", (req, res) => {
+    req.body.createdBy = req.session.userId;
     Track.create(req.body, (error, createdTrack) => {
         res.redirect("/tracks");
     });
@@ -46,6 +47,7 @@ router.post("/tracks", (req, res) => {
 
 // Edit
 router.get("/tracks/:id/edit", (req, res) => {
+    req.body.createdBy = req.session.userId;
     Track.findById(req.params.id, (error, foundTrack) => {
         res.render("editTrack.ejs", {
             track: foundTrack,

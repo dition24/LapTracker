@@ -4,16 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
     <title>Add a Car</title>
 </head>
 <body>
-   <h1>Add a New Car</h1>
-   <form action="/cars" method="POST" autocomplete="off">
+    <nav>
+        <ul>
+            <li id="appname">LapTracker</li>
+            <li>
+                <button id="logout">
+                    <a href="/">Log Out</a>
+                </button>
+            </li>
+            <li>
+                <button id="garage">
+                    <a href="/cars">Garage</a>
+                </button>
+            </li>
+        </ul>
+    </nav>
+    <h2>Add a New Car</h2>
+    <form action="/cars" method="POST" autocomplete="off">
         Year: <input type="text" name="year">
         Make: <input type="text" name="make">
         Model: <input type="text" name="model">
         Image: <input type="text" name="img">
         <input type="submit" value="Add Car">
-   </form>
+    </form>
 </body>
 </html>

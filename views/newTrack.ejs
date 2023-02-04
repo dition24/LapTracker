@@ -4,11 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
     <title>Add a Track</title>
 </head>
 <body>
-   <h1>Add a New Track</h1>
-   <form action="/tracks" method="POST" autocomplete="off">
+    <nav>
+        <ul>
+            <li id="appname">LapTracker</li>
+            <li>
+                <button id="logout">
+                    <a href="/">Log Out</a>
+                </button>
+            </li>
+            <li>
+                <button id="tracklist">
+                    <a href="/tracks">Tracklist</a>
+                </button>
+            </li>
+        </ul>
+    </nav>
+    <h2>Add a New Track</h2>
+    <form action="/tracks" method="POST" autocomplete="off">
         Name: <input type="text" name="name">
         Location: <input type="text" name="location">
         Lap Time: <input type="text" name="lapTime">
@@ -21,6 +37,6 @@
         Image: <input type="text" name="img">
         Date: <input type="text" name="date">
         <input type="submit" value="Add Track">
-   </form>
+    </form>
 </body>
 </html>

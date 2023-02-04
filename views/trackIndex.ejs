@@ -4,25 +4,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
     <title>Track Index</title>
 </head>
 <body>
     <nav>
-        <h1>LapTracker</h1>
-        <a href="/">Log Out</a>
-        <a href="/cars">Garage</a>
+        <ul>
+            <li id="appname">LapTracker</li>
+            <li>
+                <button id="logout">
+                    <a href="/">Log Out</a>
+                </button>
+            </li>
+            <li>
+                <button id="garage">
+                    <a href="/cars">Garage</a>
+                </button>
+            </li>
+        </ul>
     </nav>
-    <h1>Tracklist</h1>
+    <h2>Tracklist</h2>
     <a href="/tracks/newtrack">Add a Track</a>
     <div>
-        <ul>
+        <ul id="index">
             <% tracks.forEach(track => { %>
-                <li>
+                <li id="entry">
                     <p><%= track.name %></p>
                     <p><%= track.location %></p>
                     <a href="/tracks/<%= track._id %>"><img src="<%= track.img %>" alt="<%= track.name %>"></a>
                     <p><%= track.lapTime %></p>
-                    <p><%= track.car.model %></p>
+                    <p><%= track.car.year %> <%= track.car.make %> <%= track.car.model %></p>
                     <p><%= track.date %></p>
                 </li>
             <% }) %>

@@ -11,7 +11,11 @@ const trackSchema = new Schema({
         ref: "Car"
     },
     img: {type: String},
-    date: {type: String}
+    date: {type: String},
+    createdBy: {
+        type: Schema.Types.ObjectId,
+        ref: "User"
+    }
 });
 
 module.exports = mongoose.model("Track", trackSchema);

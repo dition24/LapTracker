@@ -5,7 +5,11 @@ const carSchema = new Schema({
     year: { type: Number},
     make: { type: String},
     model: { type: String},
-    img: { type: String}
+    img: { type: String},
+    createdBy: {
+        type: Schema.Types.ObjectId,
+        ref: "User"
+    }
 });
 
 module.exports = mongoose.model("Car", carSchema);

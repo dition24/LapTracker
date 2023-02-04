@@ -6,7 +6,7 @@ const Car = require("../models/car");
 
 // Index
 router.get("/cars", (req, res) => {
-    Car.find({}, (error, allCars) => {
+    Car.find({createdBy: req.session.userId}, (error, allCars) => {
         res.render("carIndex.ejs", {
             cars: allCars,
         });
@@ -41,6 +41,7 @@ router.put("/cars/:id", (req, res) => {
 
 // Create
 router.post("/cars", (req, res) => {
+    req.body.createdBy = req.session.userId;
     Car.create(req.body, (error, createdCar) => {
         res.redirect("/cars");
     });

@@ -4,14 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
     <title>Log In</title>
 </head>
 <body>
     <nav>
-        <h1>LapTracker</h1>
-        <a href="/">Home</a>
+        <ul>
+            <li id="appname">LapTracker</li>
+            <li>
+                <button id="home">
+                    <a href="/">Home</a>
+                </button>
+            </li>
+        </ul>
     </nav>
-    <h1>Log in</h1>
+    <h2>Log in</h2>
     <% if(error) { %>
         <p style="color: red;"><%= error %></p>
     <% } %>
@@ -24,7 +31,7 @@
             Password:
             <input type="password" name="password" required>
         </label>
-        <input type="submit" value="Log in">
+        <input id="signup" type="submit" value="Log in">
     </form>
 </body>
 </html>

@@ -4,12 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
     <title>Sign Up</title>
 </head>
 <body>
     <nav>
-        <h1>LapTracker</h1>
-        <a href="/login">Log In</a>
+        <ul>
+            <li id="appname">LapTracker</li>
+            <li>
+                <button id="login">
+                    <a href="/login">Log In</a>
+                </button>
+            </li>
+            <li>
+                <button id="home">
+                    <a href="/">Home</a>
+                </button>
+            </li>
+        </ul>
     </nav>
     <h1>Sign Up</h1>
     <% if(error) { %>
@@ -28,7 +40,7 @@
             Confirm Password:
             <input type="password" name="passwordConf" required>
         </label>
-        <input type="submit" value="Sign Up">
+        <input id="signup" type="submit" value="Sign Up">
     </form>
 </body>
 </html>
