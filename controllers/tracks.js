@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Track = require("../models/track");
 const Car = require("../models/car");
+const cloudinary = ("cloudinary").v2;
 
 // INDUCES
 
@@ -10,7 +11,7 @@ router.get("/tracks", (req, res) => {
     Track.find({createdBy: req.session.userId})
     .populate("car")
     .exec((error, allTracks) => {
-        res.render("trackIndex.ejs", {
+        res.render("tracks/index.ejs", {
             tracks: allTracks,
         });
     });
@@ -19,7 +20,7 @@ router.get("/tracks", (req, res) => {
 // New
 router.get("/tracks/newTrack", (req, res) => {
     Car.find({createdBy: req.session.userId}, (error, allCars) => {
-        res.render("newTrack.ejs", { allCars });
+        res.render("tracks/new.ejs", { allCars });
     });
 });
 
@@ -40,6 +41,14 @@ router.put("/tracks/:id", (req, res) => {
 // Create
 router.post("/tracks", (req, res) => {
     req.body.createdBy = req.session.userId;
+
+    const img = req.files.img;
+    img.mv(`./uploads/${img.name}`);
+
+    cloudinary.uploader.upload(`./uploads/${img.name}`, (err, result) => {
+        console.log(err, result);
+    });
+
     Track.create(req.body, (error, createdTrack) => {
         res.redirect("/tracks");
     });
@@ -49,7 +58,7 @@ router.post("/tracks", (req, res) => {
 router.get("/tracks/:id/edit", (req, res) => {
     req.body.createdBy = req.session.userId;
     Track.findById(req.params.id, (error, foundTrack) => {
-        res.render("editTrack.ejs", {
+        res.render("tracks/edit.ejs", {
             track: foundTrack,
         });
     });
@@ -60,7 +69,7 @@ router.get("/tracks/:id", (req, res) => {
     Track.findById(req.params.id)
     .populate("car")
     .exec((error, foundTrack) => {
-        res.render("showTrack.ejs", {
+        res.render("tracks/show.ejs", {
             track: foundTrack
         });
     });

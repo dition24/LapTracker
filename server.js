@@ -6,6 +6,7 @@ const session = require("express-session");
 const tracksRouter = require("./controllers/tracks");
 const carsRouter = require("./controllers/cars");
 const usersRouter = require("./controllers/users");
+const cloudinary = require("cloudinary").v2;
 
 // initialize the application
 const app = express();
@@ -14,6 +15,12 @@ const app = express();
 require("dotenv").config();
 const PORT = process.env.PORT;
 const DATABASE_URL = process.env.DATABASE_URL;
+
+cloudinary.config({
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.API_KEY,
+    api_secret: process.env.API_SECRET,
+});
 
 // establish connection to mongodb
 mongoose.set("strictQuery", true);
@@ -36,6 +43,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
+app.use(fileUpload({ createParentPath: true }));
 
 app.use((req, res, next) => {
     if(req.session.uesrId) {

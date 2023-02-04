@@ -1,13 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const Car = require("../models/car");
+const cloudinary = require("cloudinary").v2;
 
 // INDUCES
 
 // Index
 router.get("/cars", (req, res) => {
     Car.find({createdBy: req.session.userId}, (error, allCars) => {
-        res.render("carIndex.ejs", {
+        res.render("cars/index.ejs", {
             cars: allCars,
         });
     });
@@ -15,7 +16,7 @@ router.get("/cars", (req, res) => {
 
 // New
 router.get("/cars/new", (req, res) => {
-    res.render("newCar.ejs");
+    res.render("cars/new.ejs");
 });
 
 // Delete
@@ -42,6 +43,13 @@ router.put("/cars/:id", (req, res) => {
 // Create
 router.post("/cars", (req, res) => {
     req.body.createdBy = req.session.userId;
+    const img = req.files.img;
+    img.mv(`./uploads/${img.name}`);
+    
+    cloudinary.uploader.upload(`./uploads/${img.name}`, (err, result) => {
+        console.log(err, result);
+    });
+
     Car.create(req.body, (error, createdCar) => {
         res.redirect("/cars");
     });
@@ -50,7 +58,7 @@ router.post("/cars", (req, res) => {
 // Edit
 router.get("/cars/:id/edit", (req, res) => {
     Car.findById(req.params.id, (error, foundCar) => {
-        res.render("editCar.ejs", {
+        res.render("cars/edit.ejs", {
             car: foundCar,
         });
     });
@@ -59,7 +67,7 @@ router.get("/cars/:id/edit", (req, res) => {
 // Show
 router.get("/cars/:id", (req, res) => {
     Car.findById(req.params.id, (error, foundCar) => {
-        res.render("showCar.ejs", {
+        res.render("cars/show.ejs", {
             car: foundCar,
         });
     });
