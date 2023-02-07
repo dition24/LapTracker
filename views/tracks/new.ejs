@@ -25,17 +25,18 @@
     </nav>
     <h2>Add a New Track</h2>
     <form action="/tracks" method="POST" autocomplete="off">
-        Name: <input type="text" name="name">
-        Location: <input type="text" name="location">
-        Lap Time: <input type="text" name="lapTime">
+        Name: <input type="text" name="name"><br>
+        Location: <input type="text" name="location"><br>
+        Lap Time: <input type="text" name="lapTime"><br>
         Car:
         <select name="car">
             <% allCars.forEach(car => { %>
                 <option value="<%= car._id %>"><%= car.model %></option>
             <% }); %>
-        </select>
-        Image: <input type="text" name="img">
-        Date: <input type="text" name="date">
+        </select><br>
+        Image: <input type="text" name="img"><br>
+        Date: <input type="text" name="date"><br>
+        Notes: <textarea name="notes" cols="40" rows="20"></textarea>
         <input type="submit" value="Add Track">
     </form>
 </body>

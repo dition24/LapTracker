@@ -12,6 +12,7 @@ const trackSchema = new Schema({
     },
     img: {type: String},
     date: {type: String},
+    notes: {type: String},
     createdBy: {
         type: Schema.Types.ObjectId,
         ref: "User"

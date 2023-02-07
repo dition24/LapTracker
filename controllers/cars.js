@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Car = require("../models/car");
-const cloudinary = require("cloudinary").v2;
+// const cloudinary = require("cloudinary").v2;
 
 // INDUCES
 
@@ -43,12 +43,12 @@ router.put("/cars/:id", (req, res) => {
 // Create
 router.post("/cars", (req, res) => {
     req.body.createdBy = req.session.userId;
-    const img = req.files.img;
-    img.mv(`./uploads/${img.name}`);
+    // const img = req.files.img;
+    // img.mv(`./uploads/${img.name}`);
     
-    cloudinary.uploader.upload(`./uploads/${img.name}`, (err, result) => {
-        console.log(err, result);
-    });
+    // cloudinary.uploader.upload(`./uploads/${img.name}`, (err, result) => {
+    //     console.log(err, result);
+    // });
 
     Car.create(req.body, (error, createdCar) => {
         res.redirect("/cars");

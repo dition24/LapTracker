@@ -9,17 +9,34 @@
 </head>
 <body>
     <nav>
-        <h1>LapTracker</h1>
-        <a href="/tracks">Home</a>
-        <a href="/">Log Out</a>
+        <ul>
+            <li id="appname">LapTracker</li>
+            <li>
+                <button id="logout">
+                    <a href="/">Log Out</a>
+                </button>
+            </li>
+            <li>
+                <button id="tracklist">
+                    <a href="/tracks">Tracklist</a>
+                </button>
+            </li>
+        </ul>
     </nav>
+    <h2>Edit Track</h2>
     <form action="/tracks/<%=track._id%>?_method=PUT" method="POST">
-        Name: <input type="text" name="name" value="<%= track.name %>">
-        Location: <input type="text" name="location" value="<%= track.location %>">
-        Image: <input type="text" name="img" value="<%= track.img %>">
-        Lap Time: <input type="text" name="lapTime" value="<%= track.lapTime %>">
-        Car: <input type="text" name="car" value="<%= track.car %>">
-        Date: <input type="text" name="date" value="<%= track.date %>">
+        Name: <input type="text" name="name" value="<%= track.name %>"><br>
+        Location: <input type="text" name="location" value="<%= track.location %>"><br>
+        Image: <input type="text" name="img" value="<%= track.img %>"><br>
+        Lap Time: <input type="text" name="lapTime" value="<%= track.lapTime %>"><br>
+        Car:   
+        <select name="car">
+            <% allCars.forEach(car => { %>
+                <option value="<%= car._id %>"><%= car.model %></option>
+            <% }); %>
+        </select><br>
+        Date: <input type="text" name="date" value="<%= track.date %>"><br>
+        Notes: <textarea name="notes" cols="40" rows="20" value ="<%= track.notes %>"></textarea><br>
         <input type="submit" value="Submit Changes">
     </form>
 </body>

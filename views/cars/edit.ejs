@@ -9,15 +9,27 @@
 </head>
 <body>
     <nav>
-        <h1>LapTracker</h1>
-        <a href="/cars">Garage</a>
-        <a href="/">Log Out</a>
+        <ul>
+            <li id="appname">LapTracker</li>
+            <li>
+                <button id="logout">
+                    <a href="/">Log Out</a>
+                </button>
+            </li>
+            <li>
+                <button id="garage">
+                    <a href="/cars">Garage</a>
+                </button>
+            </li>
+        </ul>
     </nav>
+    <h2>Edit Car</h2>
     <form action="/cars/<%=car._id%>?_method=PUT" method="POST">
-        Year: <input type="text" name="year" value="<%= car.year %>">
-        Make: <input type="text" name="make" value="<%= car.make %>">
-        Model: <input type="text" name="model" value="<%= car.model %>">
-        Image: <input type="text" name="img" value="<%= car.img %>">
+        Year: <input type="text" name="year" value="<%= car.year %>"><br>
+        Make: <input type="text" name="make" value="<%= car.make %>"><br>
+        Model: <input type="text" name="model" value="<%= car.model %>"><br>
+        Image: <input type="text" name="img" value="<%= car.img %>"><br>
+        Notes: <textarea name="notes" cols="40" rows="20"></textarea><br>
         <input type="submit" value="Submit Changes">
     </form>
 </body>

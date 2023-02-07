@@ -9,23 +9,36 @@
 </head>
 <body>
     <nav>
-        <h1>LapTracker</h1>
-        <a href="/">Log Out</a>
-        <a href="/cars">Garage</a>
+        <ul>
+            <li id="appname">LapTracker</li>
+            <li>
+                <button id="logout">
+                    <a href="/">Log Out</a>
+                </button>
+            </li>
+            <li>
+                <button id="garage">
+                    <a href="/cars">Garage</a>
+                </button>
+            </li>
+        </ul>
     </nav>
-    <h1>Car</h1>
-    <ul>
-        <li>
-            <p><%= car.year %></p>
-            <p><%= car.make %></p>
-            <p><%= car.model %></p>
-            <a href="/cars/<%= car._id %>"><img src="<%= car.img %>" alt="<%= car.name %>"></a>
-            
-        </li>
+    <h2>Car</h2>
+    <div id="show">
+        <p><%= car.year %></p>
+        <p><%= car.make %></p>
+        <p><%= car.model %></p>
+        <img src="<%= car.img %>" alt="<%= car.name %>">
+    </div>
+    <div id="notes">
+        <h3>Notes:</h3>
+        <p><%= car.notes %></p>
+    </div>
+    <div>
         <a href="/cars/<%= car._id %>/edit">Edit</a>
         <form action="/cars/<%= car._id %>?_method=DELETE" method="POST">
             <input type="submit" value="DELETE" />
         </form>
-    </ul>
+    </div>
 </body>
 </html>
